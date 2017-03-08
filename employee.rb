@@ -12,14 +12,14 @@ class Employee < ActiveRecord::Base
     negative_matches = 0
 
     positive = [/positive/i, /initiative/i, /great/i, /good/i, /helpful/i,
-               /puntual/i, /positive/i, /encourage/i, /beneficial/i, /meets/i,
-               /good/i, /(team player)/i, /(hard working)/i, /helps/i, /impressed/i, /impressive/i, /fast/i, /asset/i, /leadership/i, /leader/i, /efficient/i, /(willing to help)/i, /successfully/i,
-               /pleasure/i]
+                /puntual/i, /positive/i, /encourage/i, /beneficial/i, /meets/i,
+                /good/i, /(team player)/i, /(hard working)/i, /helps/i, /impressed/i, /impressive/i, /fast/i, /asset/i, /leadership/i, /leader/i, /efficient/i, /(willing to help)/i, /successfully/i,
+                /pleasure/i]
 
     negative = [/negative/i, /lazy/i, /bad/i, /stubborn/i, /(misses deadlines)/i,
-               /late/i, /concerns/i, /difficulty/i, /struggles/i, /limitations/i,
-               /inconsistent/i, /inefficient/i, /(not done well)/i, /poorly/i,
-               /badly/i, /rude/i, /(off topic)/i, /lack/i, /inadequate/i, /limitation/i, /(room for improvement)/i, ]
+                /late/i, /concerns/i, /difficulty/i, /struggles/i, /limitations/i,
+                /inconsistent/i, /inefficient/i, /(not done well)/i, /poorly/i,
+                /badly/i, /rude/i, /(off topic)/i, /lack/i, /inadequate/i, /limitation/i, /(room for improvement)/i]
     positive.each do |r|
       matches = review.scan(r).count
       positive_matches += matches
@@ -44,7 +44,7 @@ class Employee < ActiveRecord::Base
   end
 
   def self.paid_less_than_average
-    #Ruby
+    # Ruby
     # all_employees = Employee.all
     #
     # # total = 0.0
@@ -62,19 +62,9 @@ class Employee < ActiveRecord::Base
     # # end
     # all_employees.to_a.select {|e| e.salary < average}
 
-    #SQL
+    # SQL
     # Employee.where("salary < ?", Employee.sum(:salary)/Employee.count)
     # self.where("salary < ?", self.sum(:salary)/self.count)
-    where("salary < ?", sum(:salary)/count)
+    where("salary < ?", sum(:salary) / count)
   end
 end
-
-
-
-
-
-
-
-
-
-#

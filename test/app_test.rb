@@ -21,18 +21,31 @@ class AppTest < Minitest::Test
   def test_can_create_an_employee
     response = post "/employees", name: "Britney Spears"
     assert response.ok?,
-    brit = Employee.where(name: "Britney Spears").first
+    Employee.where(name: "Britney Spears").first
     assert_equal "Britney Spears", brit.name
   end
 
   def test_can_delete_an_employee
+    Employee.create(name: "Britney Spears")
     delete "/employees", id: 1
     assert_equal [], Employee.where(id: 1)
   end
-  focus
+
   def test_can_list_employees
-    brit = Employee.create(name: "Britney Spears")
-    rusty = Employee.create(name: "Russell Osborne")
+    Employee.create(name: "Britney Spears")
+    Employee.create(name: "Russell Osborne")
     assert_equal 2, Employee.count
+  end
+
+  def test_can_list_specific_employee
+    Employee.create(name: "Britney Spears")
+    response = get "/employees", id: 1
+    assert_includes response.body, "Britney"
+  end
+
+  def test_can_change_employee_name
+    Employee.create(name: "Rusty")
+    patch "/employees", id: 1, name: "Russell Osborne"
+    # assert_equal " ", Employee.
   end
 end

@@ -10,11 +10,15 @@ class App < Sinatra::Base
     body Employee.all.to_json
   end
 
+  get "employees" do
+    content_type "application/json"
+    body Employee.find(id: params["id"]).to_json
+  end
+
   post "/employees" do
     content_type "application/json"
     body Employee.create(name: params["name"]).to_json
   end
-
 
   delete "/employees/" do
     content_type "application/json"
@@ -23,6 +27,11 @@ class App < Sinatra::Base
     employee_to_destroy.to_json
   end
 
+  patch "/employees" do
+    content_type "application/json"
+    body Employee.find(id: params["id"])
+    Employee.update(name: params["name"]).to_json
+  end
 
   run! if app_file == $PROGRAM_NAME
 end
