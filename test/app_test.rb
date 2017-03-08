@@ -29,4 +29,10 @@ class AppTest < Minitest::Test
     delete "/employees", id: 1
     assert_equal [], Employee.where(id: 1)
   end
+  focus
+  def test_can_list_employees
+    brit = Employee.create(name: "Britney Spears")
+    rusty = Employee.create(name: "Russell Osborne")
+    assert_equal 2, Employee.count
+  end
 end
