@@ -74,7 +74,7 @@ class EmployeeReviews < Minitest::Test
   end
 
   def test_give_raise_by_amount
-    new_employee = Employee.new(name: "Dan", email: "d@mail.com", phone: "914-555-5555", salary: 50000.00)
+    new_employee = Employee.new(name: "Dan", email: "d@mail.com", phone: "914-555-5555", salary: 50_000.00)
     assert_equal 60_000, new_employee.raise_by_amount(10_000)
   end
 

@@ -1,12 +1,12 @@
 name_of_db = if ENV["RACK_ENV"] == "test"
-    "db/test.db"
+  "db/test.db"
 else
-  "db/production.db"
+  "db/development.db"
 end
 
 ActiveRecord::Base.establish_connection(
   adapter: "sqlite3",
-  database: "development.sqlite3"
+  database: name_of_db
 )
 # d = Employee.create!(name: "Doug")
 #
