@@ -1,6 +1,6 @@
 require 'active_record'
 
-class CompanyDataMigration < ActiveRecord::Migration
+class CompanyDataMigration < ActiveRecord::Migration[5.0]
   def change
     create_table :companies do |t|
       t.string :name

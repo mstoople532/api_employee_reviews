@@ -1,3 +1,7 @@
 require "pry"
-require "active-record"
+require "active_record"
 require "sinatra/base"
+require_relative "company"
+require_relative "department"
+require_relative "employee"
+require_relative "db/connection"

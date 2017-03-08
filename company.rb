@@ -1,3 +1,5 @@
+require_relative "app_helper"
+
 class Company < ActiveRecord::Base
   has_many :departments
 

@@ -1,4 +1,4 @@
-require './employee'
+require_relative "app_helper"
 
 class Department < ActiveRecord::Base
   has_many :employees, dependent: :restrict_with_exception

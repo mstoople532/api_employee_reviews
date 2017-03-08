@@ -5,11 +5,15 @@ require "minitest/pride"
 require "minitest/focus"
 require "rack/test"
 
+require_relative "../app"
+require_relative "../company"
+require_relative "../department"
+require_relative "../employee"
 require_relative "../db/connection"
-require_relative "../db/migrations/create_company_table"
+require_relative "../db/migrations/create_companies_table"
 
 begin
-  CreateCompanyTable.migrate(:down)
+  CompanyDataMigration.migrate(:down)
 rescue ActiveRecord::StatementInvalid
 end
-CreateCompanyTable.migrate(:up)
+CompanyDataMigration.migrate(:up)

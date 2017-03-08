@@ -1,6 +1,10 @@
 require_relative "test_helper"
 
 class EmployeeReviews < Minitest::Test
+  def teardown
+    Student.delete_all
+  end
+
   def test_classes_exist
     assert Department
     assert Employee

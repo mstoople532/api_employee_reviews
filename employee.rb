@@ -1,4 +1,4 @@
-require 'active_record'
+require_relative "app_helper"
 
 class Employee < ActiveRecord::Base
   belongs_to :department
